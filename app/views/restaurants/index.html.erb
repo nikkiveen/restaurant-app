@@ -1,5 +1,5 @@
 <% @restaurants.each do |restaurant| %>
-  <h1><%= restaurant.name %></h1>
+  <h1><%= link_to "#{restaurant.name}", "/restaurants/#{restaurant.id}", method: :get %></h1>
   <h4><%= restaurant.bio %></h4>
   <p><%= restaurant.address %></p>
   <p><%= restaurant.email %></p>
