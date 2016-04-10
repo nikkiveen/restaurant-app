@@ -3,13 +3,13 @@
     :name => Faker::App.name,
     :address => "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
     :email => Faker::Internet.email,
-    :phone_number => Faker::PhoneNumber.phone_number,
+    :phone => Faker::PhoneNumber.phone_number,
     :bio => Faker::Lorem.paragraph(4),
-    :resturant_admin_id => rand(1..3)
+    :restaurant_admin_id => rand(1..3)
   )
 end
 
-5.time do
+5.times do
   Seat.create(
     status: "Available",
     restaurant_id: 1
