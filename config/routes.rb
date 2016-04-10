@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :diners
   get '/' => 'restaurants#index'
   get '/restaurants' => 'restaurants#index'
-  get '/restaurnts/:id' => 'restaurants#show'
+  get '/restaurants/:id' => 'restaurants#show'
 end
