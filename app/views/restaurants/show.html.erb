@@ -3,3 +3,11 @@
   <p><%= @restaurant.address %></p>
   <p><%= @restaurant.email %></p>
   <p><%= @restaurant.phone %></p>
+  <%= form_tag "/reservations", method: :post do %>
+    <div>
+      <%= hidden_field_tag :restaurant_id, @restaurant.id %>
+    </div>
+    <div>
+      <%= submit_tag "Reserve a Seat" %>
+    </div>
+  <% end %>
