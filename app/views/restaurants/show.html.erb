@@ -8,6 +8,9 @@
       <%= hidden_field_tag :restaurant_id, @restaurant.id %>
     </div>
     <div>
+      <%= date_field(:reservation, :date) %>  
+    </div>
+    <div>
       <%= submit_tag "Reserve a Seat" %>
     </div>
   <% end %>
