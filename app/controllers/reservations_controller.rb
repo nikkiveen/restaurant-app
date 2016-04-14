@@ -5,7 +5,8 @@ class ReservationsController < ApplicationController
     if available_seat
       Reservation.create(
         seat_id: available_seat.id,
-        diner_id: current_diner.id
+        diner_id: current_diner.id, 
+        date: params[:reservation][:date]
       )
 
       available_seat.update(
