@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   def create
-    available_seat = Seat.where("restaurant_id = ? AND date = ? AND status = ?", params[:restaurant_id], params[:reservation][:date], "Available").first
+    available_seat = Seat.where("restaurant_id = ? AND date = ? AND timeslot_id = ? AND status = ?", params[:restaurant_id], params[:reservation][:date], params[:timeslot][:timeslot_id], "Available").first
 
     if available_seat
       Reservation.create(
