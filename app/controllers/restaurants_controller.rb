@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find_by(id: params[:id])
-    @timeslots = ["5:00", "6:00", "7:00", "8:00", "9:00", "10:00"]
+    @timeslots = Timeslot.all
     render 'show.html.erb'
   end
 end

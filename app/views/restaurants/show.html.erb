@@ -11,6 +11,10 @@
       <%= date_field :reservation, :date %>  
     </div>
     <div>
+      <%= label_tag :timeslot, "Choose Time"%>
+      <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
+    </div>
+    <div>
       <%= submit_tag "Reserve a Seat" %>
     </div>
   <% end %>
