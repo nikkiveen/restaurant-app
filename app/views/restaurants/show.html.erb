@@ -15,6 +15,10 @@
       <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
     </div>
     <div>
+      <%= label_tag :head_count, "Choose Time"%>
+      <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
+    </div>
+    <div>
       <%= submit_tag "Reserve a Seat" %>
     </div>
   <% end %>
