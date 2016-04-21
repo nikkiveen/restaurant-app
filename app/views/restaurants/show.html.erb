@@ -8,6 +8,7 @@
       <%= hidden_field_tag :restaurant_id, @restaurant.id %>
     </div>
     <div>
+      <%= label_tag :reservation, "Choose Date"%>
       <%= date_field :reservation, :date %>  
     </div>
     <div>
@@ -15,8 +16,8 @@
       <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
     </div>
     <div>
-      <%= label_tag :head_count, "Choose Time"%>
-      <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
+      <%= label_tag :head_count, "How Many?"%>
+      <%= select_tag(:head_count, options_for_select([['1 person', 1], ['2 people', 2], ['3 people', 3], ['4 people', 4], ['5 people', 5]])) %>
     </div>
     <div>
       <%= submit_tag "Reserve a Seat" %>
