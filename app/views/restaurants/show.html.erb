@@ -17,7 +17,7 @@
     </div>
     <div>
       <%= label_tag :head_count, "How Many?"%>
-      <%= select_tag(:head_count, options_for_select([['1 person', 1], ['2 people', 2], ['3 people', 3], ['4 people', 4], ['5 people', 5]])) %>
+      <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
     </div>
     <div>
       <%= submit_tag "Reserve a Seat" %>
