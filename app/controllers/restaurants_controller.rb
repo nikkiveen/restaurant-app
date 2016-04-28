@@ -33,4 +33,11 @@ class RestaurantsController < ApplicationController
     @head_counts = [1, 2, 3, 4, 5]
     render 'show.html.erb'
   end
+
+  def edit
+    render 'edit.html.erb'
+  end
+
+  def update
+  end
 end

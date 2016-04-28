@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/restaurants/new' => 'restaurants#new'
   post '/restaurants' => 'restaurants#create'
   get '/restaurants/:id' => 'restaurants#show'
+  get '/restaurants/:id' => 'restaurants#edit'
+  patch '/restaurants/:id' => 'restaurants#update'
   ###################################################
   post '/reservations' => 'reservations#create'
 end
