@@ -1,0 +1,32 @@
+<%= form_tag "/restaurants", method: :post do %>
+  <div>
+    <%= label_tag :input_name, "Name: " %>
+    <%= text_field_tag :input_name, @restaurant.name %>
+  </div>
+  <div>
+    <%= label_tag :input_address, "Address: " %>
+    <%= text_field_tag :input_address, @restaurant.address %>
+  </div>
+  <div>
+    <%= label_tag :input_email, "Email: " %>
+    <%= text_field_tag :input_email, @restaurant.email %>
+  </div>
+  <div>
+    <%= label_tag :input_phone, "Phone: " %>
+    <%= text_field_tag :input_phone, @restaurant.phone %>
+  </div>
+  <div>
+    <%= label_tag :input_bio, "Bio: " %>
+    <%= text_field_tag :input_bio, @restaurant.bio %>
+  </div>
+  <div>
+    <%= label_tag :input_max_reservation_size, "Maximum Reservation Size: " %>
+    <%= text_field_tag :input_max_reservation_size, @restaurant.max_reservation_size %>
+  </div>
+  <div>
+      <%= hidden_field_tag :restaurant_admin_id, current_restaurant_admin.id %>
+  </div>
+  <div>
+    <%= submit_tag "Submit New Restaurant" %>
+  </div>
+<% end %>
