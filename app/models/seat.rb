@@ -1,5 +1,5 @@
 class Seat < ActiveRecord::Base
   belongs_to :restaurant
-  has_many :reservations
+  belongs_to :reservation
   has_many :diners, through: :reservations
 end

@@ -9,7 +9,6 @@
 #   )
 # end
 
-
 # Timeslot.create(
 #   time: "7:00", 
 #   restaurant_id: 1, 
@@ -134,137 +133,137 @@
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 1, 
-    date: Date.today + 1
+    date: Time.zone.today + 1
   ) 
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 2, 
-    date: Date.today + 1
+    date: Time.zone.today + 1
   ) 
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 3, 
-    date: Date.today + 1
+    date: Time.zone.today + 1
   )  
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 4, 
-    date: Date.today + 1
+    date: Time.zone.today + 1
   )  
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 5, 
-    date: Date.today + 1
+    date: Time.zone.today + 1
   )
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 1, 
-    date: Date.today + 2
+    date: Time.zone.today + 2
   ) 
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 2, 
-    date: Date.today + 2
+    date: Time.zone.today + 2
   ) 
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 3, 
-    date: Date.today + 2
+    date: Time.zone.today + 2
   )  
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 4, 
-    date: Date.today + 2
+    date: Time.zone.today + 2
   )  
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 5, 
-    date: Date.today + 2
+    date: Time.zone.today + 2
   )
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 1, 
-    date: Date.today + 3
+    date: Time.zone.today + 3
   ) 
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 2, 
-    date: Date.today + 3
+    date: Time.zone.today + 3
   ) 
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 3, 
-    date: Date.today + 3
+    date: Time.zone.today + 3
   )  
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 4, 
-    date: Date.today + 3
+    date: Time.zone.today + 3
   )  
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 5, 
-    date: Date.today + 3
+    date: Time.zone.today + 3
   )
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 1, 
-    date: Date.today + 4
+    date: Time.zone.today + 4
   ) 
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 2, 
-    date: Date.today + 4
+    date: Time.zone.today + 4
   ) 
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 3, 
-    date: Date.today + 4
+    date: Time.zone.today + 4
   )  
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 4, 
-    date: Date.today + 4
+    date: Time.zone.today + 4
   )  
 
   Seat.create(
     status: "Available",
     restaurant_id: 1,
     timeslot_id: 5, 
-    date: Date.today + 4
+    date: Time.zone.today + 4
   )
 end
