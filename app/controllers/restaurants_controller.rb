@@ -61,4 +61,7 @@ class RestaurantsController < ApplicationController
       render 'new.html.erb'
     end
   end
+
+  def destroy
+  end
 end
