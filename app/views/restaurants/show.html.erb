@@ -1,25 +1,27 @@
-  <h1><%= @restaurant.name %></h1>
-  <h4><%= @restaurant.bio %></h4>
-  <p><%= @restaurant.address %></p>
-  <p><%= @restaurant.email %></p>
-  <p><%= @restaurant.phone %></p>
-  <%= form_tag "/reservations", method: :post do %>
-    <div>
-      <%= hidden_field_tag :restaurant_id, @restaurant.id %>
-    </div>
-    <div>
-      <%= label_tag :reservation, "Choose Date"%>
-      <%= date_field :reservation, :date %>  
-    </div>
-    <div>
-      <%= label_tag :timeslot, "Choose Time"%>
-      <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
-    </div>
-    <div>
-      <%= label_tag :head_count, "How Many?"%>
-      <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
-    </div>
-    <div>
-      <%= submit_tag "Reserve a Seat" %>
-    </div>
-  <% end %>
+<h1><%= @restaurant.name %></h1>
+<h4><%= @restaurant.bio %></h4>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.email %></p>
+<p><%= @restaurant.phone %></p>
+<h3>Make a Reservation</h3>
+<%= form_tag "/reservations", method: :post do %>
+  <div>
+    <%= hidden_field_tag :restaurant_id, @restaurant.id %>
+  </div>
+  <div>
+    <%= label_tag :reservation, "Choose Date"%>
+    <%= date_field :reservation, :date %>  
+  </div>
+  <div>
+    <%= label_tag :timeslot, "Choose Time"%>
+    <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
+  </div>
+  <div>
+    <%= label_tag :head_count, "How Many?"%>
+    <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
+  </div>
+  <div>
+    <%= submit_tag "Reserve a Seat" %>
+  </div>
+<% end %>
+<%= link_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete %>

@@ -63,5 +63,11 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
+    @restaurant = Restaurant.find_by(id: params[:id])
+    if @restaurant.destroy
+      redirect_to "/restaurants"
+    else
+      redirect_to "/restaurants/#{params[:id]}"
+    end
   end
 end
