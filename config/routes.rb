@@ -11,4 +11,11 @@ Rails.application.routes.draw do
   patch '/restaurants/:id' => 'restaurants#update'
   ###################################################
   post '/reservations' => 'reservations#create'
+  ###################################################
+
+  namespace :api do
+    namespace :v1 do
+      get '/restaurants' => 'restaurants#index'
+    end
+  end
 end
