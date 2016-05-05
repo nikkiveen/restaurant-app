@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :restaurant_admins
   devise_for :diners
+  get '/theme' => 'theme#index'
   ###################################################
   get '/' => 'restaurants#index'
   get '/restaurants' => 'restaurants#index'
