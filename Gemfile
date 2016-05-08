@@ -27,6 +27,8 @@ gem 'unirest', '~> 1.1.2'
 gem 'devise', '~> 3.5.6'
 
 gem 'faker', '~> 1.6.3'
+
+gem 'yelp', require: 'yelp'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
