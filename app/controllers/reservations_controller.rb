@@ -12,6 +12,11 @@ class ReservationsController < ApplicationController
     else
       flash[:error] = "No Seats Available!"  
     end
-    redirect_to '/restaurants'
+    redirect_to "/reservations/#{reservation.id}"
+  end
+
+  def show
+    @reservation = Reservation.find_by(id: params[:id])
+
   end
 end
