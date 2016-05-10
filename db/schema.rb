@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510010807) do
+ActiveRecord::Schema.define(version: 20160510230549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160510010807) do
     t.integer  "total_seats"
     t.integer  "open_timeslot"
     t.integer  "close_timeslot"
+    t.integer  "seats_per_timeslot"
   end
 
   create_table "seats", force: :cascade do |t|
