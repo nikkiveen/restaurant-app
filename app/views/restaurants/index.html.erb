@@ -3,8 +3,7 @@
 <% @restaurants.each do |restaurant| %>
   <h1><%= link_to "#{restaurant.name}", "/restaurants/#{restaurant.id}", method: :get %></h1>
   <h4><%= restaurant.bio %></h4>
-  <p><%= restaurant.address %></p>
-  <p><%= restaurant.email %></p>
+  <p><%= restaurant.address %>, <%= restaurant.city %>, <%= restaurant.state %>, <%= restaurant.zip %></p>
   <p><%= restaurant.phone %></p>
 <% end %>
 
