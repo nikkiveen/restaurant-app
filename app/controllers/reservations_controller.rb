@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
       restaurant_id: params[:restaurant_id],
       head_count: params[:head_count]
     )
-    if restaurant.save
+    if reservation.save
       flash[:success] = "Seat successfully reserved!"
     else
       flash[:error] = "No Seats Available!"  
