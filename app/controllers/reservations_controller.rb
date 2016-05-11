@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_diner!
+  
   def create
     existing_reservations = Reservation.where("restaurant_id = ? AND date = ? AND timeslot_id = ?", params[:restaurant_id], params[:reservation][:date], params[:timeslot][:timeslot_id])
     restaurant = Restaurant.find_by(id: params[:restaurant_id])
