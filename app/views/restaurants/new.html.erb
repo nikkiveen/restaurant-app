@@ -8,9 +8,22 @@
     <%= text_field_tag :input_address, @restaurant.address %>
   </div>
   <div>
+    <%= label_tag :input_city, "City: " %>
+    <%= text_field_tag :input_city, @restaurant.city %>
+  </div>
+  <div>
+    <%= label_tag :input_state, "State: " %>
+    <%= text_field_tag :input_state, @restaurant.state %>
+  </div>
+  <div>
+    <%= label_tag :input_zip, "Zip Code: " %>
+    <%= text_field_tag :input_zip, @restaurant.zip %>
+  </div>
+  <div>
     <%= label_tag :input_email, "Email: " %>
     <%= text_field_tag :input_email, @restaurant.email %>
   </div>
+  <div>>
   <div>
     <%= label_tag :input_phone, "Phone: " %>
     <%= text_field_tag :input_phone, @restaurant.phone %>
@@ -19,9 +32,24 @@
     <%= label_tag :input_bio, "Bio: " %>
     <%= text_field_tag :input_bio, @restaurant.bio %>
   </div>
+    <%= label_tag :input_total_seats, "Total Seats In Restaurant: " %>
+    <%= text_field_tag :input_total_seats, @restaurant.total_seats %>
+  </div>
   <div>
     <%= label_tag :input_max_reservation_size, "Maximum Reservation Size: " %>
     <%= text_field_tag :input_max_reservation_size, @restaurant.max_reservation_size %>
+  </div>
+  <div>
+    <%= label_tag :input_seats_per_timeslot, "Maximum Seats Available Per 30 Minute Timeslot: " %>
+    <%= text_field_tag :input_seats_per_timeslot, @restaurant.seats_per_timeslot %>
+  </div>  
+  <div>
+    <%= label_tag :input_open_timeslot, "Open: "%>
+    <%= collection_select :input_open_timeslot, :timeslot_id, @timeslots, :id, :time %>
+  </div>  
+  <div>
+    <%= label_tag :input_close_timeslot, "Close: "%>
+    <%= collection_select :input_close_timeslot, :timeslot_id, @timeslots, :id, :time %>
   </div>
   <div>
       <%= hidden_field_tag :restaurant_admin_id, current_restaurant_admin.id %>
