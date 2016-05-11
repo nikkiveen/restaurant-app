@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :diners
   get '/' => 'landing_pages#landing'
   ###################################################
+  get '/logins' => 'log_ins#index'
+  ###################################################
   get '/theme' => 'theme#index'
   ###################################################
   get '/' => 'restaurants#index'
