@@ -1,4 +1,5 @@
 class Reservation < ActiveRecord::Base
-  has_many :seats
-  belongs_to :user
+  belongs_to :restaurant
+  belongs_to :diner
+  belongs_to :timeslot
 end

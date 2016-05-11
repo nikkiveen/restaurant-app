@@ -5,5 +5,4 @@ class Diner < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :reservations
-  has_many :seats, through: :reservations
 end

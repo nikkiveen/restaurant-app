@@ -1,3 +1,3 @@
 class Timeslot < ActiveRecord::Base
-  has_many :seats 
+  has_many :reservations
 end
