@@ -99,8 +99,8 @@ class RestaurantsController < ApplicationController
   end
 
   private
-  
-  def authenticate_restaurant_admin!
+
+  def authenticate_restaurant_admin
     unless restaurant_admin
       redirect_to '/restaurants'
     end

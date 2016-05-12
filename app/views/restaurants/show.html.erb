@@ -1,8 +1,35 @@
-<h1><%= @restaurant.name %></h1>
-<h4><%= @restaurant.bio %></h4>
-<p><%= @restaurant.address %></p>
-<p><%= @restaurant.email %></p>
-<p><%= @restaurant.phone %></p>
+
+
+<% if current_restaurant_admin.id = @restaurant.restaurant_admin_id %>
+    <%= button_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete %>
+<% end %>
+
+<section id="home">
+    <div class="home-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <h1><%= @restaurant.name %></h1>
+                    <h5><%= @restaurant.address %>, <%= @restaurant.city %>, <%= @restaurant.state %>, <%= @restaurant.zip %></h5>
+                    <h5><%= @restaurant.phone %></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 center-title text-center">
+                <h3>About Restaurant</h3>
+                <span class="center-line"></span>
+                <p><%= @restaurant.bio %></p>
+            </div>
+        </div>
+    </div>  
+</section>
+
 <% if current_diner %>
     <h3>Make a Reservation</h3>
     <%= form_tag "/reservations", method: :post do %>
@@ -25,8 +52,5 @@
         <%= submit_tag "Reserve a Seat" %>
       </div>
     <% end %>
-<% end %>
-<% if current_restaurant_admin %>
-    <%= link_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete %>
 <% end %>
  
