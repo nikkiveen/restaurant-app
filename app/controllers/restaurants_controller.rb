@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
     else
       @restaurants = Restaurant.all
     end
-      render 'index.html.erb'
+    render 'index.html.erb'
   end
 
   def new

@@ -1,9 +1,24 @@
-<%= link_to "Add A New Restaurant", "/restaurants/new", method: :get %>
-
-<% @restaurants.each do |restaurant| %>
-  <h1><%= link_to "#{restaurant.name}", "/restaurants/#{restaurant.id}", method: :get %></h1>
-  <h4><%= restaurant.bio %></h4>
-  <p><%= restaurant.address %>, <%= restaurant.city %>, <%= restaurant.state %>, <%= restaurant.zip %></p>
-  <p><%= restaurant.phone %></p>
-<% end %>
-
+<div class="divide80"></div>
+  <div class="container">
+    <div class="row">
+      <div class="portfolio-box iso-call col-3-space">
+        <% @restaurants.each do |restaurant| %>
+          <div class="project-post photography branding">
+            <div class="item-img-wrap ">
+                <img src="img/img-8.jpg" class="img-responsive" alt="workimg">
+                <div class="item-img-overlay">
+                    <a href="/restaurants/<%= restaurant.id %>">
+                        <span></span>
+                    </a>
+                </div>
+            </div> 
+            <div class="work-desc">
+                <h3><a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name %></a></h3>
+                <span><%= restaurant.phone %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>s
+    </div>
+</div>
+   
