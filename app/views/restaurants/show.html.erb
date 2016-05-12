@@ -1,5 +1,6 @@
 
 <% if current_restaurant_admin && current_restaurant_admin.id = @restaurant.restaurant_admin_id %>
+    <%= button_to "Edit This Restaurant", "/restaurants/#{params[:id]}/edit", method: :get %>
     <%= button_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete %>
 <% end %>
 
