@@ -17,7 +17,21 @@ namespace :restaurants do
         zip: restaurant.location.postal_code,
         latitude: restaurant.location.coordinate.latitude,
         longitude: restaurant.location.coordinate.longitude,
-        phone: restaurant.display_phone
+        phone: restaurant.display_phone,
+        restaurant_admin_id: rand(1..5),
+        total_seats: 100,
+        max_reservation_size: 6,
+        seats_per_timeslot: 10,
+        open_timeslot: 21,
+        close_timeslot: 39,
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+              culpa qui officia deserunt mollit anim id est laborum.",
+        email: "restaurant@restaurant.com"
       )
     end
   end

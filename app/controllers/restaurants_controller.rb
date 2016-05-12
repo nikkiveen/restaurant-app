@@ -2,8 +2,12 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_restaurant_admin!, except: [:index, :show]
 
   def index
-    @restaurants = Restaurant.all
-    render 'index.html.erb'
+    if current_restaurant_admin
+      @restaurants = Restaurant.where("restaurant_admin_id = ?", current_restaurant_admin.id)
+    else
+      @restaurants = Restaurant.all
+    end
+      render 'index.html.erb'
   end
 
   def new
@@ -40,14 +44,15 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find_by(id: params[:id])
+    
     all_timeslots = Timeslot.all
     @timeslots = []
-
     all_timeslots.each do |timeslot|
       if @restaurant.open_timeslot.to_i <= timeslot.id.to_i && timeslot.id.to_i <= @restaurant.close_timeslot.to_i
         @timeslots << timeslot
       end
     end
+
     @head_count_options = []
     head_count = @restaurant.max_reservation_size.to_i
     until head_count == 0
@@ -55,6 +60,7 @@ class RestaurantsController < ApplicationController
       head_count -= 1
     end
     @head_count_options.reverse!
+
     render 'show.html.erb'
   end
 

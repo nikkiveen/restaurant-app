@@ -1,6 +1,5 @@
 
-
-<% if current_restaurant_admin.id = @restaurant.restaurant_admin_id %>
+<% if current_restaurant_admin && current_restaurant_admin.id = @restaurant.restaurant_admin_id %>
     <%= button_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete %>
 <% end %>
 
@@ -31,26 +30,40 @@
 </section>
 
 <% if current_diner %>
-    <h3>Make a Reservation</h3>
-    <%= form_tag "/reservations", method: :post do %>
-      <div>
-        <%= hidden_field_tag :restaurant_id, @restaurant.id %>
-      </div>
-      <div>
-        <%= label_tag :reservation, "Choose Date"%>
-        <%= date_field :reservation, :date %>  
-      </div>
-      <div>
-        <%= label_tag :timeslot, "Choose Time"%>
-        <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
-      </div>
-      <div>
-        <%= label_tag :head_count, "How Many?"%>
-        <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
-      </div>
-      <div>
-        <%= submit_tag "Reserve a Seat" %>
-      </div>
-    <% end %>
+    <section class="reservation" id="book-table">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 center-title text-center">
+                    <h3>Make a Reservation</h3>
+                    <span class="center-line"></span>
+                </div>
+            </div>
+            <div id="reservation-form">
+               <%= form_tag "/reservations", method: :post do %>
+                    <div>
+                        <%= hidden_field_tag :restaurant_id, @restaurant.id %>
+                    </div>
+                    <div>
+                        <%= label_tag :reservation, "Date"%>
+                        <%= date_field :reservation, :date %>  
+                    </div>
+                    <div>
+                        <%= label_tag :timeslot, "Time"%>
+                        <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
+                    </div>
+                    <div>
+                        <%= label_tag :head_count, "How Many?"%>
+                        <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
+                    </div>
+                    <div>
+                        <%= submit_tag "Make Reservation" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </section>
 <% end %>
+
+
+
  

@@ -2,8 +2,8 @@ class ReservationsController < ApplicationController
   def create
     existing_reservations = Reservation.where("restaurant_id = ? AND date = ? AND timeslot_id = ?", params[:restaurant_id], params[:reservation][:date], params[:timeslot][:timeslot_id])
     restaurant = Restaurant.find_by(id: params[:restaurant_id])
+    
     total_existing_head_count = 0
-
     existing_reservations.each do |reservation|
       total_existing_head_count += reservation.head_count
     end
