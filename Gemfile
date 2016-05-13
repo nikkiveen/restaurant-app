@@ -33,6 +33,7 @@ gem 'dotenv-rails'
 # Use Twilio
 gem 'twilio-ruby', '~> 4.11.1'
 
+gem 'geocoder', '~> 1.3.4'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
