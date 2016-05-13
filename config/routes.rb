@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   ###################################################
   post '/reservations' => 'reservations#create'
   get '/reservations/:id' => 'reservations#show'
+  delete '/reservations/:id' => 'reservations#destroy'
   ###################################################
 
   namespace :api do
