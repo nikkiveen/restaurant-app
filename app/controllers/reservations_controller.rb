@@ -1,4 +1,13 @@
 class ReservationsController < ApplicationController
+  def index
+    if current_diner
+      @reservations = Reservation.where("diner_id = ?", current_diner.id)
+      render 'index.html.erb'
+    else
+      redirect_to '/restaurants'
+    end
+  end
+
   def create
     existing_reservations = Reservation.where("restaurant_id = ? AND date = ? AND timeslot_id = ?", params[:restaurant_id], params[:reservation][:date], params[:timeslot][:timeslot_id])
     restaurant = Restaurant.find_by(id: params[:restaurant_id])

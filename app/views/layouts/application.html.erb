@@ -42,8 +42,10 @@
                 <div class="col-sm-12 text-right">
                     <ul class="list-inline top-dark-right">
                         <% if current_diner %>
+                            <li><%= current_diner.email %></li>
                             <li><i class="fa fa-user"></i><%= link_to "Sign Out", "/diners/sign_out", method: :delete %><li>
                         <% elsif current_restaurant_admin %>
+                            <li><%= current_restaurant_admin.email %></li>
                             <li><i class="fa fa-user"></i><%= link_to "Sign Out", "/restaurant_admins/sign_out", method: :delete %><li>
                         <% else %>
                             <li>RESTAURANT?</li>
@@ -52,7 +54,7 @@
                             <li>DINER?</li>
                             <li><a href="/diners/sign_in"><i class="fa fa-user"></i>Sign In</a></li>
                             <li><a href="/diners/sign_up"><i class="fa fa-user-plus"></i>Sign Up</a></li> 
-                        <% end %>                      
+                        <% end %>                  
                     </ul>
                 </div>
             </div>
@@ -72,15 +74,16 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/restaurants">View All Restaurants</a></li>
                         <li id="maindropdown" class="dropdown active ">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                <li><a href="/restaurants">View All Restaurants</a></li>
                                 <% if current_restaurant_admin %>
                                     <li><a href="/restaurants/new">Add New Restaurant</a></li>
                                     <li><a href="/restaurant_admins/edit">Edit Profie</a></li>
                                 <% end %>
                                 <% if current_diner %>
+                                    <li><a href="/reservations">View All Reservations</a></li>
                                     <li><a href="/diners/edit">Edit Profie</a></li>
                                 <% end %>
                             </ul>

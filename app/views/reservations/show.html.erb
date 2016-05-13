@@ -1,6 +1,7 @@
 <h1>Reservation Confirmation</h1>
 <p>Restaurant: <%= @reservation.restaurant.name %></p>
 <p># of Diners: <%= @reservation.head_count %></p>
+<p>Date: <%= @reservation.date %></p>
 <p>Time: <%= @reservation.timeslot.time %></p>
 <% if @reservation.diner_id = current_diner.id %>
   <%= button_to "Cancel Reservation", "/reservations/#{params[:id]}", method: :delete %>
