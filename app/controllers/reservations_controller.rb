@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+
   def index
     if current_diner
       @reservations = Reservation.where("diner_id = ?", current_diner.id)

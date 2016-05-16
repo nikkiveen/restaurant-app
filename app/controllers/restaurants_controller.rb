@@ -104,6 +104,9 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def run_search
+  end
+
   private
 
   def authenticate_restaurant_admin

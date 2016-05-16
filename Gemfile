@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
@@ -32,6 +31,14 @@ gem 'dotenv-rails'
 
 # Use Twilio
 gem 'twilio-ruby', '~> 4.11.1'
+
+# Use delayed job for running background jobs
+gem 'delayed_job_active_record'
+
+# Need daemons to start delayed_job
+gem 'daemons'
+
+gem 'firebase', '~> 0.2.6'
 
 gem 'geocoder', '~> 1.3.4'
 # Use ActiveModel has_secure_password
