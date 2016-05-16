@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/restaurants/:id/edit' => 'restaurants#edit'
   patch '/restaurants/:id' => 'restaurants#update'
   delete '/restaurants/:id' => 'restaurants#destroy'
+  post '/search' => 'restaurants#run_search'
   ###################################################
   get '/reservations' => 'reservations#index'
   post '/reservations' => 'reservations#create'

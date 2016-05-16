@@ -72,6 +72,15 @@
                     </button>
                     <a class="navbar-brand" href="/restaurants"><img src="/img/logo.png" alt="DINE."></a>
                 </div>
+                <% if current_diner %>
+                    <form class="navbar-form navbar-left" role="search">
+                        <%= form_tag "/search", method: :post do %>
+                        <%= label_tag :search, ""%>
+                        <%= text_field_tag :search %>
+                        <%= submit_tag "Search" %>
+                        <% end %>
+                    </form>
+                <% end %>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/restaurants">View All Restaurants</a></li>

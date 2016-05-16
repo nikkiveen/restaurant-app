@@ -105,6 +105,11 @@ class RestaurantsController < ApplicationController
   end
 
   def run_search
+    if current_diner
+      search_term = params[:search]
+      @restaurants = Restaurant.where("name LIKE ?", "%" + search_term + "%")
+      render 'index.html.erb'
+    end
   end
 
   private
