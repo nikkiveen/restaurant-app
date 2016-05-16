@@ -12,6 +12,7 @@
                     <h1><%= @restaurant.name %></h1>
                     <h5><%= @restaurant.address %>, <%= @restaurant.city %>, <%= @restaurant.state %>, <%= @restaurant.zip %></h5>
                     <h5><%= @restaurant.phone %></h5>
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red%7C<%= @restaurant.latitude %>,<%= @restaurant.longitude %>&size=600x300&maptype=roadmap&key=<% ENV['GOOGLE_MAP_KEY'] %>">
                 </div>
             </div>
         </div>
