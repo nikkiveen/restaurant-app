@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_restaurant_admin!, except: [:index, :show, :run_search]
+  before_action :authenticate_restaurant_admin!, except: [:index, :show, :run_search, :available]
 
   def index
     if current_restaurant_admin
@@ -103,7 +103,20 @@ class RestaurantsController < ApplicationController
   end
 
   def available
-    render 'available.html.erb'
+    @restaurants = []
+
+    Restaurant.all.each do |restaurant|
+      @reservations = Reservation.where(restaurant_id: restaurant.id, date: params[:reservation][:date], timeslot_id: params[:timeslot][:timeslot_id])
+      @total_existing_head_count = 0
+      @reservations.each do |reservation|
+        @total_existing_head_count += reservation.head_count
+      end
+      if restaurant.seats_per_timeslot.to_i - @total_existing_head_count.to_i >= params[:head_count].to_i
+        @restaurants << restaurant
+      end
+    end
+    
+    render 'index.html.erb'
   end
 
   private

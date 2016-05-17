@@ -27,7 +27,6 @@ class ReservationsController < ApplicationController
           total_existing_head_count = 0
           @reservations.each do |reservation|
             total_existing_head_count += reservation.head_count
-            p total_existing_head_count
           end
           if total_existing_head_count < @restaurant.seats_per_timeslot
             @timeslots << timeslot

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   ###################################################
   get '/theme' => 'theme#index'
   ###################################################
-  get '/' => 'restaurants#index'
   get '/restaurants' => 'restaurants#index'
   get '/restaurants/available' => 'restaurants#available'
   get '/restaurants/new' => 'restaurants#new'
