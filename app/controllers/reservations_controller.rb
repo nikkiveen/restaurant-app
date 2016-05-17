@@ -12,7 +12,6 @@ class ReservationsController < ApplicationController
     if current_diner
       @restaurant = Restaurant.find_by(id: params[:restaurant_id])
 
-
       @head_count_options = []
       head_count = @restaurant.max_reservation_size.to_i
       until head_count == 0
@@ -42,10 +41,10 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    existing_reservations = Reservation.where("restaurant_id = ? AND date = ? AND timeslot_id = ?", params[:restaurant_id], params[:reservation][:date], params[:timeslot][:timeslot_id])
+    existing_reservations = Reservation.where("restaurant_id = ? AND date = ? AND timeslot_id = ?", params[:restaurant_id], params[:date], params[:timeslot][:timeslot_id])
     restaurant = Restaurant.find_by(id: params[:restaurant_id])
     timeslot = Timeslot.find_by(id: params[:timeslot][:timeslot_id])
-    datetime_string = params[:reservation][:date].to_s + " " + timeslot.time + "+0:00"
+    datetime_string = params[:date].to_s + " " + timeslot.time + "+0:00"
     datetime = DateTime.parse(datetime_string)
     total_existing_head_count = 0
     existing_reservations.each do |reservation|
@@ -57,7 +56,7 @@ class ReservationsController < ApplicationController
         diner_id: current_diner.id,
         diner_name: current_diner.first_name + " " + current_diner.last_name,
         diner_phone: current_diner.phone,
-        date: params[:reservation][:date],
+        date: params[:date],
         timeslot_id: params[:timeslot][:timeslot_id],
         datetime: datetime,
         restaurant_id: params[:restaurant_id],

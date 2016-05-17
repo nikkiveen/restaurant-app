@@ -1,3 +1,35 @@
 <div class="jumbotron">
   <h1>JUMBOTRON: PUT LOGO/IMAGE HERE!!</h1>
 </div>
+
+<% if current_diner %>
+    <section class="reservation" id="book-table">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 center-title text-center">
+                    <h3>Find Restaurants</h3>
+                    <span class="center-line"></span>
+                </div>
+            </div>
+            <div id="available-form">
+              <%= form_tag "/restaurants/available", method: :get do %>
+                <div>
+                    <%= label_tag :reservation, "Date"%>
+                    <%= date_field :reservation, :date %>  
+                </div>
+                <div>
+                    <%= label_tag :head_count, "How Many?"%>
+                    <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
+                </div>
+                <div>
+                  <%= label_tag :timeslot, "Time"%>
+                  <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
+                </div>
+                <div>
+                    <%= submit_tag "Show All Restaurants With Requested Availability" %>
+                </div>
+              <% end %>
+            </div>
+        </div>
+    </section>
+<% end %>

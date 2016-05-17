@@ -97,9 +97,13 @@ class RestaurantsController < ApplicationController
   end
 
   def run_search
-      search_term = params[:search]
-      @restaurants = Restaurant.where("name LIKE ? OR city LIKE ? OR zip LIKE ?", "%" + search_term + "%", "%" + search_term + "%", "%" + search_term + "%")
-      render 'index.html.erb'
+    search_term = params[:search]
+    @restaurants = Restaurant.where("name LIKE ? OR city LIKE ? OR zip LIKE ?", "%" + search_term + "%", "%" + search_term + "%", "%" + search_term + "%")
+    render 'index.html.erb'
+  end
+
+  def available
+    render 'available.html.erb'
   end
 
   private

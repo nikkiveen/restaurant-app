@@ -2,24 +2,21 @@
   <%= form_tag "/reservations", method: :post do %>
     <div>
       <%= hidden_field_tag :restaurant_id, params[:restaurant_id]  %>
-        </div>
+    </div>
     <div>
-        <%= label_tag :reservation, "Date"%>
-        <%= date_field :reservation, :date, :value => params[:date]%>  
+      <p> Date: <%= params[:reservation][:date] %>
+      <%= hidden_field_tag :date, params[:reservation][:date]  %>
+    </div>
+      <div>
+      <p> # of Diners: <%= params[:head_count] %>
+      <%= hidden_field_tag :head_count, params[:head_count]  %>
     </div>
     <div>
       <%= label_tag :timeslot, "Time"%>
       <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
     </div>
     <div>
-        <%= label_tag :head_count, "How Many?"%>
-        <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] }), :value => params[:head_count]) %>
-    </div>
-    <div>
         <%= submit_tag "Make Reservation" %>
     </div>
   <% end %>
-</div>
-
-<div>
 </div>
