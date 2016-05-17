@@ -44,30 +44,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find_by(id: params[:id])
-    @map = Unirest.get("https://maps.googleapis.com/maps/api/staticmap?markers=color:red%7C#{@restaurant.latitude},#{@restaurant.longitude}&size=600x300&maptype=roadmap&key=#{ENV['GOOGLE_MAP_KEY']}").body
 
-    @timeslots = []
-
-    Timeslot.all.each do |timeslot|
-      if @restaurant.open_timeslot.to_i <= timeslot.id.to_i && timeslot.id.to_i <= @restaurant.close_timeslot.to_i
-        @reservations = Reservation.where(restaurant_id: params[:id], timeslot_id: timeslot.id, date: Date.today-3.days)
-        total_existing_head_count = 0
-        @reservations.each do |reservation|
-          total_existing_head_count += reservation.head_count
-        end
-        if total_existing_head_count < @restaurant.seats_per_timeslot
-          @timeslots << timeslot
-        end
-      end
-    end
-    
-    # all_timeslots = Timeslot.all
-    # @timeslots = []
-    # all_timeslots.each do |timeslot|
-    #   if @restaurant.open_timeslot.to_i <= timeslot.id.to_i && timeslot.id.to_i <= @restaurant.close_timeslot.to_i
-    #     @timeslots << timeslot
-    #   end
-    # end
     @head_count_options = []
     head_count = @restaurant.max_reservation_size.to_i
     until head_count == 0

@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div id="reservation-form">
-               <%= form_tag "/reservations", method: :post do %>
+               <%= form_tag "/reservations/new", method: :get do %>
                     <div>
                         <%= hidden_field_tag :restaurant_id, @restaurant.id %>
                     </div>
@@ -50,15 +50,11 @@
                         <%= date_field :reservation, :date %>  
                     </div>
                     <div>
-                        <%= label_tag :timeslot, "Time"%>
-                        <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
-                    </div>
-                    <div>
                         <%= label_tag :head_count, "How Many?"%>
                         <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
                     </div>
                     <div>
-                        <%= submit_tag "Make Reservation" %>
+                        <%= submit_tag "See Available Times" %>
                     </div>
                 <% end %>
             </div>

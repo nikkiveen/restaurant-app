@@ -1,9 +1,41 @@
 class ReservationsController < ApplicationController
-
   def index
     if current_diner
       @reservations = Reservation.where("diner_id = ?", current_diner.id)
       render 'index.html.erb'
+    else
+      redirect_to '/restaurants'
+    end
+  end
+
+  def new
+    if current_diner
+      @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+
+
+      @head_count_options = []
+      head_count = @restaurant.max_reservation_size.to_i
+      until head_count == 0
+        @head_count_options << head_count
+        head_count -= 1
+      end
+      @head_count_options.reverse!
+
+      @timeslots = []
+      Timeslot.all.each do |timeslot|
+        if @restaurant.open_timeslot.to_i <= timeslot.id.to_i && timeslot.id.to_i <= @restaurant.close_timeslot.to_i
+          @reservations = Reservation.where(restaurant_id: @restaurant.id, date: params[:reservation][:date], timeslot_id: timeslot.id)
+          total_existing_head_count = 0
+          @reservations.each do |reservation|
+            total_existing_head_count += reservation.head_count
+            p total_existing_head_count
+          end
+          if total_existing_head_count < @restaurant.seats_per_timeslot
+            @timeslots << timeslot
+          end
+        end
+      end
+      render 'new.html.erb'
     else
       redirect_to '/restaurants'
     end

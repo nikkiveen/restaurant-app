@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post '/search' => 'restaurants#run_search'
   ###################################################
   get '/reservations' => 'reservations#index'
+  get '/reservations/new' => 'reservations#new'
   post '/reservations' => 'reservations#create'
   get '/reservations/:id' => 'reservations#show'
   delete '/reservations/:id' => 'reservations#destroy'
