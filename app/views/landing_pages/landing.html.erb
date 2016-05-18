@@ -3,17 +3,15 @@
 </div>
 
 <% if current_diner %>
-    <section class="reservation" id="book-table">
-        <div class="container">
-            <div class="row">
+
                 <div class="col-sm-6 col-sm-offset-3 center-title text-center">
                     <h3>Find Restaurants With Availability</h3>
                     <span class="center-line"></span>
                 </div>
+
+            <div class="col-xs-4">
             </div>
-            <div class="col-sm-4">
-            </div>
-            <div class="col-sm-4" id="available-form">
+            <div class="col-xs-4" id="available-form">
               <%= form_tag "/restaurants/available", method: :get do %>
                 <div class="form-group">
                     <%= label_tag :reservation, "Date"%>
@@ -27,13 +25,11 @@
                   <%= label_tag :timeslot, "Time"%>
                   <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time, :class => "form-control" %>
                 </div>
-                <div class="form-group text-center">
+                <div class="form-group">
                     <%= submit_tag "Show All Restaurants With Requested Availability" , :class => "btn btn-default"%>
                 </div>
               <% end %>
             </div>
-            <div class="col-sm-4">
+            <div class="col-xs-4">
             </div>
-        </div>
-    </section>
 <% end %>

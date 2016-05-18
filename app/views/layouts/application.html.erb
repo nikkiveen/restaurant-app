@@ -76,15 +76,14 @@
                     <form class="navbar-form navbar-left" role="search">
                         <%= form_tag "/search", method: :post do %>
                         <%= label_tag :search, ""%>
-                        <%= text_field_tag :search, :placeholder => "Restaurant, City, Zip", :class => "form-control" %>
+                        <%= text_field_tag :search, nil, placeholder: "Restaurant, City, or Zip", :class => "form-control", :placeholder => "Restaurant, City, Zip" %>
                         <%= submit_tag "Search", :class => "btn btn-default"%>
                         <% end %>
                     </form>
                 <% end %>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/restaurants">View All Restaurants</a></li>
-                        <% if current_diner %>
+                       <% if current_diner %>
                             <li><a href="/">Search for Restaurants With Availability</a></li>
                         <% end %>
                         <li id="maindropdown" class="dropdown active ">
