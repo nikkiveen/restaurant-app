@@ -43,7 +43,7 @@ class ReservationsController < ApplicationController
     existing_reservations = Reservation.where("restaurant_id = ? AND date = ? AND timeslot_id = ?", params[:restaurant_id], params[:date], params[:timeslot][:timeslot_id])
     restaurant = Restaurant.find_by(id: params[:restaurant_id])
     timeslot = Timeslot.find_by(id: params[:timeslot][:timeslot_id])
-    datetime_string = params[:date].to_s + " " + timeslot.time + "+0:00"
+    datetime_string = params[:date].to_s + " " + timeslot.time + "-0500"
     datetime = DateTime.parse(datetime_string)
     total_existing_head_count = 0
     existing_reservations.each do |reservation|
@@ -63,6 +63,7 @@ class ReservationsController < ApplicationController
       )
 
       if @reservation.save
+        @reservation.reminder
         flash[:success] = "Seat successfully reserved!"
         redirect_to "/reservations/#{@reservation.id}"
       else

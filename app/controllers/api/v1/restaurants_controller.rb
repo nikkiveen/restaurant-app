@@ -9,3 +9,4 @@ class Api::V1::RestaurantsController < ApplicationController
     render 'show.json.jbuilder'
   end
 end
+

@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/restaurants' => 'restaurants#index'
       get '/restaurants/:id' => 'restaurants#show'
+      get '/reservations' => 'reservations#index'
+      get '/reservations/:id' => 'reservations#show'
     end
   end
 end
