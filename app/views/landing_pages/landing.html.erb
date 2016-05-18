@@ -7,28 +7,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 center-title text-center">
-                    <h3>Find Restaurants</h3>
+                    <h3>Find Restaurants With Availability</h3>
                     <span class="center-line"></span>
                 </div>
             </div>
-            <div id="available-form">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4" id="available-form">
               <%= form_tag "/restaurants/available", method: :get do %>
-                <div>
+                <div class="form-group">
                     <%= label_tag :reservation, "Date"%>
-                    <%= date_field :reservation, :date %>  
+                    <%= date_field :reservation, :date, :class => "form-control" %>  
                 </div>
-                <div>
+                <div class="form-group">
                     <%= label_tag :head_count, "How Many?"%>
-                    <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
+                    <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] }), :class => "form-control") %>
                 </div>
-                <div>
+                <div class="form-group">
                   <%= label_tag :timeslot, "Time"%>
-                  <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time %>
+                  <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time, :class => "form-control" %>
                 </div>
-                <div>
-                    <%= submit_tag "Show All Restaurants With Requested Availability" %>
+                <div class="form-group text-center">
+                    <%= submit_tag "Show All Restaurants With Requested Availability" , :class => "btn btn-default"%>
                 </div>
               <% end %>
+            </div>
+            <div class="col-sm-4">
             </div>
         </div>
     </section>

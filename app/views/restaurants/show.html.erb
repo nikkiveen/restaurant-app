@@ -1,9 +1,3 @@
-
-<% if current_restaurant_admin && current_restaurant_admin.id = @restaurant.restaurant_admin_id %>
-    <%= button_to "Edit This Restaurant", "/restaurants/#{params[:id]}/edit", method: :get %>
-    <%= button_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete %>
-<% end %>
-
 <section id="home">
     <div class="home-inner">
         <div class="container">
@@ -31,6 +25,13 @@
     </div>  
 </section>
 
+<% if current_restaurant_admin && current_restaurant_admin.id = @restaurant.restaurant_admin_id %>
+    <div class="col-sm-6 col-sm-offset-3 center-title text-center">
+        <%= button_to "Edit This Restaurant", "/restaurants/#{params[:id]}/edit", method: :get %><br>
+        <%= button_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete %>
+    </div>
+<% end %>
+
 <% if current_diner %>
     <section class="find-restaurant">
         <div class="container">
@@ -40,23 +41,29 @@
                     <span class="center-line"></span>
                 </div>
             </div>
-            <div id="reservation-form">
-               <%= form_tag "/reservations/new", method: :get do %>
-                    <div>
-                        <%= hidden_field_tag :restaurant_id, @restaurant.id %>
-                    </div>
-                    <div>
-                        <%= label_tag :reservation, "Date"%>
-                        <%= date_field :reservation, :date %>  
-                    </div>
-                    <div>
-                        <%= label_tag :head_count, "How Many?"%>
-                        <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] })) %>
-                    </div>
-                    <div>
-                        <%= submit_tag "See Available Times" %>
-                    </div>
-                <% end %>
+            <div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div id="reservation-form">
+                   <%= form_tag "/reservations/new", method: :get do %>
+                        <div class="form-group">
+                            <%= hidden_field_tag :restaurant_id, @restaurant.id, :class => "form-control" %>
+                        </div>
+                        <div>
+                            <%= label_tag :reservation, "Date"%>
+                            <%= date_field :reservation, :date, :class => "form-control" %>  
+                        </div>
+                        <div class="form-group">
+                            <%= label_tag :head_count, "How Many?"%>
+                            <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] }), :class => "form-control") %>
+                        </div>
+                        <div class="form-group">
+                            <%= submit_tag "See Available Times", :class => "btn btn-default" %>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="col-sm-4">
+                </div>
             </div>
         </div>
     </section>

@@ -43,10 +43,10 @@
                     <ul class="list-inline top-dark-right">
                         <% if current_diner %>
                             <li><%= current_diner.email %></li>
-                            <li><i class="fa fa-user"></i><%= link_to "Sign Out", "/diners/sign_out", method: :delete %><li>
+                            <li><i class="fa fa-times"></i><%= link_to "Sign Out", "/diners/sign_out", method: :delete %><li>
                         <% elsif current_restaurant_admin %>
                             <li><%= current_restaurant_admin.email %></li>
-                            <li><i class="fa fa-user"></i><%= link_to "Sign Out", "/restaurant_admins/sign_out", method: :delete %><li>
+                            <li><i class="fa fa-times"></i><%= link_to "Sign Out", "/restaurant_admins/sign_out", method: :delete %><li>
                         <% else %>
                             <li>RESTAURANT?</li>
                             <li><a href="/restaurant_admins/sign_in"><i class="fa fa-user"></i>Sign In</a></li>
@@ -73,16 +73,20 @@
                     <a class="navbar-brand" href="/restaurants"><img src="/img/logo.png" alt="DINE."></a>
                 </div>
                 <% if current_diner %>
-                    <%= form_tag "/search", method: :post do %>
-                    <%= label_tag :search, ""%>
-                    <%= text_field_tag :search, "Restaurant, City, or Zip" %>
-                    <%= submit_tag "Search" %>
-                    <% end %>
+                    <form class="navbar-form navbar-left" role="search">
+                        <%= form_tag "/search", method: :post do %>
+                        <%= label_tag :search, ""%>
+                        <%= text_field_tag :search, :placeholder => "Restaurant, City, Zip", :class => "form-control" %>
+                        <%= submit_tag "Search", :class => "btn btn-default"%>
+                        <% end %>
+                    </form>
                 <% end %>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/restaurants">View All Restaurants</a></li>
-                        <li><a href="/">Search for Restaurants With Availability</a></li>
+                        <% if current_diner %>
+                            <li><a href="/">Search for Restaurants With Availability</a></li>
+                        <% end %>
                         <li id="maindropdown" class="dropdown active ">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -132,14 +136,20 @@
             </div><!--container-->
         </div><!--navbar-default-->
 
-        <% flash.each do |name, message| %>
-            <div class="alert alert-<%= name %> alert-dismissible fade in" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</span><span class="sr-only">Close</span></button>
-              <%= message.html_safe %>  
-            </div>
-        <% end %>
+
         
-        <%= yield %>
+        <div class=container>
+            <% flash.each do |name, message| %>
+                <div class="alert alert-<%= name %> alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</span><span class="sr-only">Close</span></button>
+                    <%= message.html_safe %>  
+                </div>
+            <% end %>
+            <div class=container>
+                <%= yield %>
+            </div>
+        </div>
+        </body>
         <!--rev slider start-->
 
 

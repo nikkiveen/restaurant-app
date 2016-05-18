@@ -1,59 +1,68 @@
-<%= form_tag "/restaurants/#{@restaurant.id}", method: :patch do %>
-    <div>
-    <%= label_tag :input_name, "Name: " %>
-    <%= text_field_tag :input_name, @restaurant.name %>
-  </div>
-  <div>
-    <%= label_tag :input_address, "Address: " %>
-    <%= text_field_tag :input_address, @restaurant.address %>
-  </div>
-  <div>
-    <%= label_tag :input_city, "City: " %>
-    <%= text_field_tag :input_city, @restaurant.city %>
-  </div>
-  <div>
-    <%= label_tag :input_state, "State: " %>
-    <%= text_field_tag :input_state, @restaurant.state %>
-  </div>
-  <div>
-    <%= label_tag :input_zip, "Zip Code: " %>
-    <%= text_field_tag :input_zip, @restaurant.zip %>
-  </div>
-  <div>
-    <%= label_tag :input_email, "Email: " %>
-    <%= text_field_tag :input_email, @restaurant.email %>
-  </div>
-  <div>
-    <%= label_tag :input_phone, "Phone: " %>
-    <%= text_field_tag :input_phone, @restaurant.phone %>
-  </div>
-  <div>
-    <%= label_tag :input_bio, "Bio: " %>
-    <%= text_field_tag :input_bio, @restaurant.bio %>
-  </div>
-    <%= label_tag :input_total_seats, "Total Seats In Restaurant: " %>
-    <%= text_field_tag :input_total_seats, @restaurant.total_seats %>
-  </div>
-  <div>
-    <%= label_tag :input_max_reservation_size, "Maximum Reservation Size: " %>
-    <%= text_field_tag :input_max_reservation_size, @restaurant.max_reservation_size %>
-  </div>
-  <div>
-    <%= label_tag :input_seats_per_timeslot, "Maximum Seats Available Per 30 Minute Timeslot: " %>
-    <%= text_field_tag :input_seats_per_timeslot, @restaurant.seats_per_timeslot %>
-  </div>  
-  <div>
-    <%= label_tag :input_open_timeslot, "Open: "%>
-    <%= collection_select :input_open_timeslot, :timeslot_id, @timeslots, :id, :time, {:selected => @restaurant.open_timeslot} %>
-  </div>  
-  <div>
-    <%= label_tag :input_close_timeslot, "Close: "%>
-    <%= collection_select :input_close_timeslot, :timeslot_id, @timeslots, :id, :time, {:selected => @restaurant.close_timeslot} %>
-  </div>
-  <div>
-      <%= hidden_field_tag :restaurant_admin_id, current_restaurant_admin.id %>
-  </div>
-  <div>
-    <%= submit_tag "Submit Changes" %>
-  </div>
-<% end %>
+<h1 class="page-header">Edit Restaurant Information</h1>
+<div class="col-xs-4">
+</div>
+<div class="col-xs-4">
+  <%= form_tag "/restaurants/#{@restaurant.id}", method: :patch do %>
+    <div class="form-group">
+      <%= label_tag :input_name, "Name: " %>
+      <%= text_field_tag :input_name, @restaurant.name, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_address, "Address: " %>
+      <%= text_field_tag :input_address, @restaurant.address, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_city, "City: " %>
+      <%= text_field_tag :input_city, @restaurant.city, :class => "form-control" %>
+    </div> 
+    <div class="form-group">
+      <%= label_tag :input_state, "State: " %>
+      <%= text_field_tag :input_state, @restaurant.state, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_zip, "Zip Code: " %>
+      <%= text_field_tag :input_zip, @restaurant.zip, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_email, "Email: " %>
+      <%= text_field_tag :input_email, @restaurant.email, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_phone, "Phone: " %>
+      <%= text_field_tag :input_phone, @restaurant.phone, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_bio, "Bio: " %>
+      <%= text_area_tag :input_bio, @restaurant.bio, rows: 6, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_total_seats, "Total Seats In Restaurant: " %>
+      <%= text_field_tag :input_total_seats, @restaurant.total_seats, :class => "form-control"  %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_max_reservation_size, "Maximum Reservation Size: " %>
+      <%= text_field_tag :input_max_reservation_size, @restaurant.max_reservation_size, :class => "form-control"  %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :input_seats_per_timeslot, "Maximum Seats Available Per 30 Minute Timeslot: " %>
+      <%= text_field_tag :input_seats_per_timeslot, @restaurant.seats_per_timeslot, :class => "form-control"  %>
+    </div>  
+    <div class="form-group">
+      <%= label_tag :input_open_timeslot, "Open: "%><br>
+      <%= collection_select :input_open_timeslot, :timeslot_id, @timeslots, :id, :time, {:selected => @restaurant.open_timeslot}, :class => "form-control" %>
+    </div>  
+    <div class="form-group">
+      <%= label_tag :input_close_timeslot, "Close: "%><br>
+      <%= collection_select :input_close_timeslot, :timeslot_id, @timeslots, :id, :time, {:selected => @restaurant.close_timeslot}, :class => "form-control"  %>
+    </div>
+    <div class="form-group">
+        <%= hidden_field_tag :restaurant_admin_id, current_restaurant_admin.id %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag "Submit Changes", :class => "btn btn-default"%>
+    </div>
+  <% end %>
+</div>
+<div class="col-xs-4">
+</div>
+
