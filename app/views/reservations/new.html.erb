@@ -2,24 +2,25 @@
 </div>
 <div class="col-xs-4">
 <div id="reservaton-form">
+<p class="reservation-info"><b>Restaurant: </b><%= @restaurant.name %></p>
+<p class="reservation-info"><b>Date: </b><%= params[:reservation][:date] %></p>
+<p class="reservation-info"><b>Number of Diners: </b><%= params[:head_count] %></p>
   <%= form_tag "/reservations", method: :post do %>
     <div>
-      <%= hidden_field_tag :restaurant_id, params[:restaurant_id], :class => "form-control"  %>
+      <%= hidden_field_tag :restaurant_id, params[:restaurant_id], :class => "form-control" %>
     </div>
-    <div class>
-      <h4 class="form-text">Date: <%= params[:reservation][:date] %></h4>
-      <%= hidden_field_tag :date, params[:reservation][:date], :class => "form-control"   %>
+    <div class="form-group">
+      <%= hidden_field_tag :date, params[:reservation][:date], :class => "form-control" %>
     </div>
-    <div>
-      <h4 class="form-text">Number of Diners: <%= params[:head_count] %></h4>
-      <%= hidden_field_tag :head_count, params[:head_count], :class => "form-control"   %>
+    <div class="form-group">
+      <%= hidden_field_tag :head_count, params[:head_count], :class => "form-control" %>
     </div>
     <div class="form-group">
       <%= label_tag :timeslot, "Time" %>
       <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time, :class => "form-control" %>
     </div>
     <div class="form-group">
-        <%= submit_tag "Make Reservation", :class => "btn btn-default" %>
+        <%= submit_tag "Make Reservation", :class => "btn btn-info" %>
     </div>
   <% end %>
 </div>

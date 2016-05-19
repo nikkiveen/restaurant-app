@@ -3,13 +3,15 @@ class ReservationsController < ApplicationController
     if current_diner
       @reservations = Reservation.where("diner_id = ?", current_diner.id)
       render 'index.html.erb'
+    elsif current_restaurant_admin
+      @reservations = Reservation.where("restaurant_id = ?", params[:restaurant_id])
     else
       redirect_to '/restaurants'
     end
   end
 
   def new
-    if current_diner
+    if current_diner8
       @restaurant = Restaurant.find_by(id: params[:restaurant_id])
 
       @head_count_options = []
@@ -52,7 +54,7 @@ class ReservationsController < ApplicationController
 
     if total_existing_head_count.to_i + params[:head_count].to_i <= restaurant.seats_per_timeslot.to_i
       @reservation = Reservation.new(
-        diner_id: current_diner.id,
+        diner_id: cuorrent_diner.id,
         diner_name: current_diner.first_name + " " + current_diner.last_name,
         diner_phone: current_diner.phone,
         date: params[:date],

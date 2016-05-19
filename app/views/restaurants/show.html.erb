@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text-center">
-                    <h1><%= @restaurant.name %></h1>
+                    <h1 class="restaurant-name"><%= @restaurant.name %></h1>
                     <h5><%= @restaurant.address %>, <%= @restaurant.city %>, <%= @restaurant.state %>, <%= @restaurant.zip %></h5>
                     <h5><%= @restaurant.phone %></h5>
                     <img src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red%7C<%= @restaurant.latitude %>,<%= @restaurant.longitude %>&size=600x300&maptype=roadmap&key=<% ENV['GOOGLE_MAP_KEY'] %>">
@@ -27,8 +27,9 @@
 
 <% if current_restaurant_admin && current_restaurant_admin.id = @restaurant.restaurant_admin_id %>
     <div class="col-sm-6 col-sm-offset-3 center-title text-center">
-        <%= button_to "Edit This Restaurant", "/restaurants/#{params[:id]}/edit", method: :get %><br>
-        <%= button_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete %>
+        <%= button_to "View All Reservations", "/reservations", method: :get, :class => "btn btn-info", params: {restaurant_id: params[:id]} %><br />
+        <%= button_to "Edit This Restaurant", "/restaurants/#{params[:id]}/edit", method: :get, :class => "btn btn-info" %><br />
+        <%= button_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete, :class => "btn btn-info" %><br />
     </div>
 <% end %>
 
@@ -42,14 +43,15 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-xs-5">
                 </div>
+                <div class="col-xs-2">
                 <div id="reservation-form">
                    <%= form_tag "/reservations/new", method: :get do %>
                         <div class="form-group">
-                            <%= hidden_field_tag :restaurant_id, @restaurant.id, :class => "form-control" %>
+                            <%= hidden_field_tag :restaurant_id, @restaurant.id%>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <%= label_tag :reservation, "Date"%>
                             <%= date_field :reservation, :date, :class => "form-control" %>  
                         </div>
@@ -58,11 +60,12 @@
                             <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] }), :class => "form-control") %>
                         </div>
                         <div class="form-group">
-                            <%= submit_tag "See Available Times", :class => "btn btn-default" %>
+                            <%= submit_tag "See Available Times", :class => "btn btn-info" %>
                         </div>
                     <% end %>
                 </div>
-                <div class="col-sm-4">
+                </div>
+                <div class="col-xs-5">
                 </div>
             </div>
         </div>
