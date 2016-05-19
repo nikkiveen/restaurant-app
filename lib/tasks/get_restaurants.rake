@@ -6,7 +6,7 @@ namespace :restaurants do
                                 token_secret: ENV['YELP_TOKEN_SECRET']
                               })
     parameters = { category_filter: "restaurants", limit: 20 }
-    results = client.search('Chicago', parameters)
+    results = client.search('Austin', parameters)
     restaurants = results.businesses
     restaurants.each do |restaurant|
       Restaurant.create(
@@ -18,7 +18,7 @@ namespace :restaurants do
         latitude: restaurant.location.coordinate.latitude,
         longitude: restaurant.location.coordinate.longitude,
         phone: restaurant.display_phone,
-        restaurant_admin_id: rand(1..5),
+        restaurant_admin_id: rand(1..50),
         total_seats: 100,
         max_reservation_size: 6,
         seats_per_timeslot: 10,
