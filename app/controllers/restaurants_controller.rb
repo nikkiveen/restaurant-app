@@ -115,7 +115,6 @@ class RestaurantsController < ApplicationController
         @restaurants << restaurant
       end
     end
-    
     render 'index.html.erb'
   end
 
