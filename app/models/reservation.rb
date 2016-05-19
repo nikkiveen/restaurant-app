@@ -6,7 +6,7 @@ class Reservation < ActiveRecord::Base
   validates :diner_name, presence: true
   validates :diner_phone, presence: true
 
-  after_create :reminder
+  # after_create :reminder
 
   @@REMINDER_TIME = 1.day # minutes before appointment
 
