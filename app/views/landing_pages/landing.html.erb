@@ -8,27 +8,27 @@
         <span class="center-line"></span>
     </div>
 
-    <div class="col-xs-4">
+    <div class="col-xs-5">
     </div>
-    <div class="col-xs-4" id="available-form">
+    <div class="col-xs-2" id="available-form">
       <%= form_tag "/restaurants/available", method: :get do %>
         <div class="form-group">
             <%= label_tag :reservation, "Date"%>
-            <%= date_field :reservation, :date, :class => "form-control" %>  
+            <%= date_field :reservation, :date, :value => Time.now.strftime('%Y-%m-%d'), :class => "form-control" %>  
         </div>
         <div class="form-group">
             <%= label_tag :head_count, "How Many?"%>
             <%= select_tag(:head_count, options_for_select( @head_count_options.map { |value| [ value, value ] }), :class => "form-control") %>
         </div>
         <div class="form-group">
-          <%= label_tag :timeslot, "Time"%>
-          <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time, :class => "form-control" %>
+          <%= label_tag :timeslot, "Time" %>
+          <%= collection_select :timeslot, :timeslot_id, @timeslots, :id, :time, {:selected => 27}, :class => "form-control" %>
         </div>
         <div class="form-group">
-            <%= submit_tag "Show All Restaurants With Requested Availability" , :class => "btn btn-default" %>
+            <%= submit_tag "Show Restaurants", :class => "btn btn-info" %>
         </div>
       <% end %>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-5">
     </div>
 <% end %>
