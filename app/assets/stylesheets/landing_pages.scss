@@ -5,7 +5,16 @@
   text-align: center;
 }
 
+.jumbotron { 
+  background-color: #333333 !important;
+}
+
+#jumbotron-text {
+  font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+  color: #32c5d2;
+}
+
 .jumbotron-image {
   text-align: center;
-  width: 100%;
+  width: 900px;
 }

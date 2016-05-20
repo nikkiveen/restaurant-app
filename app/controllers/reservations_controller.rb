@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    if current_diner8
+    if current_diner
       @restaurant = Restaurant.find_by(id: params[:restaurant_id])
 
       @head_count_options = []

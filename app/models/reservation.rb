@@ -6,9 +6,9 @@ class Reservation < ActiveRecord::Base
   validates :diner_name, presence: true
   validates :diner_phone, presence: true
 
-  # after_create :reminder
+  after_create :reminder
 
-  @@REMINDER_TIME = 1.day # minutes before appointment
+  @@REMINDER_TIME = 1.minute # minutes before appointment
 
   # Notify our appointment attendee X minutes before the appointment time
   def reminder
@@ -25,7 +25,7 @@ class Reservation < ActiveRecord::Base
   end
 
   def when_to_run
-    datetime - @@REMINDER_TIME
+    created_at + @@REMINDER_TIME
   end
 
   handle_asynchronously :reminder, :run_at => Proc.new { |i| i.when_to_run }

@@ -28,6 +28,7 @@
 <% if current_restaurant_admin && current_restaurant_admin.id = @restaurant.restaurant_admin_id %>
     <div class="col-sm-6 col-sm-offset-3 center-title text-center">
         <%= button_to "View All Reservations", "/reservations", method: :get, :class => "btn btn-info", params: {restaurant_id: params[:id]} %><br />
+        <%= button_to "View Today's Unreserved Seats", "/timeslots/#{params[:id]}", method: :get, :class => "btn btn-info" %><br />
         <%= button_to "Edit This Restaurant", "/restaurants/#{params[:id]}/edit", method: :get, :class => "btn btn-info" %><br />
         <%= button_to "Delete This Restaurant", "/restaurants/#{params[:id]}", method: :delete, :class => "btn btn-info" %><br />
     </div>

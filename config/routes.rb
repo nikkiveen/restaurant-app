@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/reservations/:id' => 'reservations#show'
   delete '/reservations/:id' => 'reservations#destroy'
   ###################################################
+  get '/timeslots/:id' => 'timeslots#show'
 
   namespace :api do
     namespace :v1 do

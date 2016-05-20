@@ -47,16 +47,16 @@
 # Timeslot.create(time: "5:00 AM")
 # Timeslot.create(time: "5:30 AM") 
 
-# 200.times do
-#   Reservation.create(
-#     diner_id: rand(1..100),
-#     timeslot_id: rand(21..39),
-#     date: (Time.zone.today + 2.days),
-#     head_count: rand(1..6),
-#     restaurant_id: rand(1..20),
-#     diner_name: "Jane Doe",
-#     diner_phone: "17084201312"
-#   )
+200.times do
+  Reservation.create(
+    diner_id: rand(1..100),
+    timeslot_id: rand(21..39),
+    date: (Time.zone.today + 1.day),
+    head_count: rand(1..6),
+    restaurant_id: rand(1..20),
+    diner_name: "Jane Doe",
+    diner_phone: "17084201312"
+  )
   
 #   Reservation.create(
 #     diner_id: rand(1..100),
@@ -117,4 +117,4 @@
 #     diner_name: "Jane Doe",
 #     diner_phone: "17084201312"
 #   )
-# end
+end
