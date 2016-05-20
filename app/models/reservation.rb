@@ -12,11 +12,12 @@ class Reservation < ActiveRecord::Base
 
   # Notify our appointment attendee X minutes before the appointment time
   def reminder
-    @restaurant_name = self.restaurant.name
+    @rest_name = self.restaurant.name
+    @rest_phone = self.restaurant.phone
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     time_str = ((self.datetime).localtime).strftime("%I:%M%p on %b. %d, %Y")
-    reminder = "Hi #{self.diner_name}. Please confirm your reservation for #{@restaurant_name} coming up at #{time_str}."
+    reminder = "Hi #{self.diner_name}. Don't forget your reservation for #{@rest_name} coming up at #{time_str}! Call to cancel: #{@rest_phone}."
     message = @client.account.messages.create(
       :from => @twilio_number,
       :to => self.diner_phone,

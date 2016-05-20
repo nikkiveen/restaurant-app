@@ -54,7 +54,7 @@ class ReservationsController < ApplicationController
 
     if total_existing_head_count.to_i + params[:head_count].to_i <= restaurant.seats_per_timeslot.to_i
       @reservation = Reservation.new(
-        diner_id: cuorrent_diner.id,
+        diner_id: current_diner.id,
         diner_name: current_diner.first_name + " " + current_diner.last_name,
         diner_phone: current_diner.phone,
         date: params[:date],
